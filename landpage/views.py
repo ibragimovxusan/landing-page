@@ -1,11 +1,7 @@
-import random
-import string
 from .models import CatchUser, Deadline
 from django.contrib import messages
-from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect
-from django.contrib.auth import authenticate, login, logout
-from datetime import datetime
+from django.contrib.auth import authenticate, login
 from django.utils import timezone
 
 
@@ -34,45 +30,13 @@ def register(request):
                 messages.success(request, 'Your account has been created!')
                 return redirect("/")
         else:
-            pass
-    return render(request, 'index.html', {'date_time': last_time})
-
-
-
-# from datetime import datetime
-
-# def index(request):
-#     last_deadline = Deadline.objects.all().last()
-
-#     if last_deadline:
-#         deadline_time = last_deadline.deadline_time
-#         current_datetime = datetime.now()
-
-#         if deadline_time > current_datetime:
-#             register(request)
-#         elif deadline_time < current_datetime:
-#             user = request.user
-#             if user.is_authenticated:
-#                 user.enter_the_vebinar = True
-#                 user.save()
-#             return redirect('/')
-#         else:
-#             return redirect('/')
-
-#     return render(request, 'index.html')
-
-    last_datetime = Deadline.objects.all().last()
-    current_datetime = datetime.now()
-
-    if last_datetime > current_datetime:
-        register(request)
-    elif last_datetime < current_datetime:
-        user = request.user
-        if user.is_authenticated:
-            user.enter_the_vebinar = True
-            user.save()
-        return redirect('/')
-    else:
-        return redirect('/')
-
-    return render(request, 'index.html')
+            
+            if request.user.is_authenticated:
+                print("Work!!!!!!!!!")
+                user = request.user
+                user.enter_the_vebinar = True
+                user.save()
+            else:
+                print("!!!!!Don't Work!!!!!!")
+                pass
+    return render(request, 'index.html', {'date_time': last_time, 'request': request})

@@ -101,7 +101,7 @@
 
             <div class="button-box">
                 {% now "d-m-Y H:i" as current_datetime %}
-                {% if date_time.datetime|date:"d-m-Y H:i" < current_datetime %}
+                {% if date_time.datetime|date:"d-m-Y H:i" > current_datetime %}
                     <div class="button" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModalCenter">
                         RO'YXATDAN O'TISH <i class="fa-thin fa-fingerprint"></i>
                     </div>
