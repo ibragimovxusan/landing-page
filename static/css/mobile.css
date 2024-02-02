@@ -14,7 +14,7 @@
     }
 
     .for-title {
-        width: 100%;
+        width: 346px;
         height: 10vh;
         background: var(--Linear);
         border-bottom-left-radius: 20px;
@@ -32,7 +32,7 @@
 
     .for_border {
         width: 1px;
-        height: 4vw;
+        height: 14vw;
         background: linear-gradient(180deg, rgba(182, 118, 0, 0.00) 0%, rgba(182, 118, 0, 0.60) 46.88%, rgba(182, 118, 0, 0.00) 100%);
     }
 
@@ -40,6 +40,18 @@
     h2 {
         text-align: center;
         color: #4B3000;
+    }
+
+    .title-top h3 {
+        font-family: 'Bebas Neue';
+        font-size: 30px;
+    }
+
+    .title-top p {
+        font-family: 'Gilroy';
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 16.8px;
     }
 
     .data,
@@ -73,6 +85,10 @@
         background-clip: text;
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
+
+        @media (max-width: 576px) {
+            letter-spacing: 0px;
+        }
     }
 
     .mobi-text {
@@ -91,14 +107,30 @@
         text-transform: uppercase;
     }
 
-    .box-text,
+    .box-text
     .box-text1 {
-        color: #fff;
-        width: 80vw;
+        color: #fff !important;
+        width: 100px;
         font-size: 4vw !important;
         font-family: 'Poppins';
         margin-left: 5vw;
         margin-top: 0;
+    }
+
+    @media (max-width: 576px) {
+            .box-text {
+                width: 100%;
+                text-align: center;
+                margin-left: 0;
+                font-size: 15px !important;
+            }
+            .box-text1 {
+                text-align: center;
+                font-size: 16px !important;
+            }
+            .box-text1:nth-child(2) {
+                color: white;
+            }
     }
 
     .button-box {
@@ -116,6 +148,18 @@
         justify-content: space-evenly;
         flex-wrap: wrap;
         align-items: center;
+
+        @media (max-width: 576px) {
+            padding: 1rem 0;
+            background: rgba(0, 0, 0, 0.50);
+            left: auto;
+            bottom: -15%;
+            .button {
+                width: 250px;
+                box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+                font-weight: 600;
+            }
+        }
     }
 
     .button {
