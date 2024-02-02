@@ -29,6 +29,7 @@ class CatchUser(AbstractUser):
 
 class Deadline(models.Model):
     datetime = models.DateTimeField(null=True, blank=True)
+    link = models.URLField(null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
