@@ -18,6 +18,51 @@
     align-items: center;
     position: relative;
 }
+
+.modal-header {
+    flex-wrap: wrap;
+    justify-content: center!important;
+}
+
+.title-top h3 {
+    font-family: 'Bebas Neue';
+    font-weight: 400;
+}
+
+.title-top p {
+    font-family: 'Gilroy';
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 19.2px;
+}
+
+.modal-footer {
+    width: 100%;
+}
+
+.sent-btn {
+    color: white;
+    width: 100%;    
+    background: #000!important;
+}
+
+.phone-input {
+    padding: 10px;
+    font-size: 16px;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    width: 100%;
+    outline: none;
+}
+/* Style for the input field when focused */
+.phone-input:focus {
+    border-color: #ccc;
+}
+/* Style for the input field when it has content */
+.phone-input:not(:placeholder-shown) {
+    border-color: #ccc;
+}
+
 .for-title div {
     margin-top: 10px;
 }
@@ -73,8 +118,9 @@ h2 {
 }
 .main .p1 {
     text-align: center;
-    font-family: 'Poppins';
-    font-size: 22px;
+    font-family: 'Gilroy';
+    font-size: 32px;
+    line-height: 38.82px;
     font-style: normal;
     font-weight: 500;
     line-height: normal;
@@ -113,15 +159,18 @@ h2 {
 .box-text {
     width: 326px;
     font-size: 22px !important;
-    font-family: 'Poppins';
-    margin-left: 150px;
+    font-weight: 700;
+    font-family: 'Gilroy';
+    margin-left: 135px;
     margin-top: 0;
 }
+
 .box-text1 {
-    width: 300px;
+    width: 260px;
     font-size: 18px !important;
-    font-family: 'Poppins';
+    font-family: 'Gilroy';
     margin-top: 20px;
+    color: #fff;
 }
 .box-text span {
     background: var(--Linear, linear-gradient(92deg, #EEC38E 0.6%, #FCEBB1 33.1%, #FCEBB1 68.17%, #EEC38E 99.63%));
@@ -141,7 +190,7 @@ h2 {
     flex-shrink: 0;
     border-radius: 10px;
     border: 1px solid rgba(252, 203, 110, 0.30);
-    background: rgba(0, 0, 0, 0.10);
+    background: rgba(0, 0, 0, 0.70);
     backdrop-filter: blur(10px);
     position: absolute;
     bottom: 0;

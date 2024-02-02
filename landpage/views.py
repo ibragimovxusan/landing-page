@@ -6,32 +6,36 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from datetime import datetime
+from django.utils import timezone
 
 
 
 def register(request):
-    usernames = CatchUser.objects.values_list('username', flat=True)
-    if request.method == "POST":
-        first_name = request.POST['first_name']
-        last_name = request.POST['last_name']
-        phone_number = request.POST['username']
-        password = "Pass!123"
+    last_time = Deadline.objects.all().last()
+    if last_time.datetime > timezone.now():
+        print("Hello")
+        if request.method == "POST":
+            first_name = request.POST.get('first_name')
+            phone_number = request.POST.get('phone_number')
+            password = "Pass!123"
+            print(phone_number)
+            print(first_name)
 
-        user = CatchUser.objects.filter(username=phone_number)
+            user = CatchUser.objects.filter(username=phone_number)
 
-        if user.exists():
-            messages.warning(request, "User already exists!")
-            return redirect('register')
+            if user.exists():
+                messages.warning(request, "User already exists!")
+                return redirect('/')
+            else:
+                instance = CatchUser.objects.create_user(username=phone_number, password=password, first_name=first_name)
+                user = authenticate(username=phone_number, password=password, first_name=first_name)
+                if user is not None:
+                    login(request, user)
+                messages.success(request, 'Your account has been created!')
+                return redirect("/")
         else:
-            instance = CatchUser.objects.create_user(username=phone_number, password=password, first_name=first_name,
-                                                    last_name=last_name, phone_number=phone_number)
-            user = authenticate(username=phone_number, password=password, first_name=first_name, last_name=last_name, phone_number=phone_number)
-            if user is not None:
-                login(request, user)
-            messages.success(request, 'Your account has been created!')
-            return redirect("/")
-    print("Success")
-    return render(request, 'index.html')
+            pass
+    return render(request, 'index.html', {'date_time': last_time})
 
 
 
